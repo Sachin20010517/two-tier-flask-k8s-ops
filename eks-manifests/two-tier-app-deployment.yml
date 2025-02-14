@@ -5,7 +5,7 @@ metadata:
   labels:
     app: two-tier-app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: two-tier-app
@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - name: two-tier-app
-          image: sachinayeshmantha/two-tier-flask-k8s-ops:IMAGE_TAG
+          image: sachinayeshmantha/two-tier-flask-k8s-ops:IMAGE_TAG  
           env:
             - name: MYSQL_HOST
-              value: mysql          # this is your mysql's service clusture IP, Make sure to change it with yours
+              value: mysql          # This is your MySQL's service cluster IP
             - name: MYSQL_PASSWORD
               value: "admin"
             - name: MYSQL_USER
