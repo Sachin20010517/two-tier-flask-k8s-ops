@@ -63,6 +63,19 @@
             margin-bottom: 1.5rem;
         }
 
+        .message {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            color: #2c3e50;
+        }
+
+        .message:last-child {
+            margin-bottom: 0;
+        }
+
         form {
             display: flex;
             gap: 1rem;
@@ -144,7 +157,9 @@
         <h1>Two-Tier Flask & MySQL Application</h1>
         
         <div class="message-container">
-            <!-- Content will be dynamically added here -->
+            {% for message in messages %}
+                <div class="message">{{ message[0] }}</div>
+            {% endfor %}
         </div>
 
         <form action="/submit" method="post">
