@@ -1,109 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask App</title>
+    <title>Modern Flask App</title>
     <style>
-        body, h1, p, form, input {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .container {
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-info {
+            font-size: 0.9rem;
+            color: #ecf0f1;
+        }
+
+        .main-container {
+            flex: 1;
             max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .container:hover {
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
         }
 
         h1 {
-            color: #007BFF;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
         }
 
-        p {
-            color: #666;
-            margin-bottom: 10px;
+        .message-container {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
         }
 
         form {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         input[type="text"] {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
-        input[type="text"]:hover, input[type="text"]:focus {
-            border-color: #007BFF;
+        input[type="text"]:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
         }
 
         input[type="submit"] {
-            padding: 10px 15px;
-            background-color: #007BFF;
-            color: #fff;
+            padding: 0.8rem 1.5rem;
+            background-color: #4a90e2;
+            color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #357abd;
             transform: translateY(-2px);
         }
 
-        input[type="submit"]:active {
-            transform: translateY(0);
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin-top: auto;
         }
 
-        @media (max-width: 600px) {
-            .container {
-                margin: 20px 10px;
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 1rem;
+                padding: 1rem;
             }
 
-            input[type="text"] {
-                font-size: 14px;
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            form {
+                flex-direction: column;
+            }
+
+            input[type="submit"] {
+                width: 100%;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Hello Dosto, 
-            Let's make a 2 Tier Application with Flask and MYSQL!</h1>
-        {% for message in messages %}
-            <p>{{ message[0] }}</p>
-        {% endfor %}
+    <header class="header">
+        <div class="header-content">
+            <h2>Sachin Ayeshmantha</h2>
+            <div class="profile-info">
+                <p>Training Software Engineer</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h1>Two-Tier Flask & MySQL Application</h1>
+        
+        <div class="message-container">
+            <!-- Content will be dynamically added here -->
+        </div>
 
         <form action="/submit" method="post">
-            <input type="text" name="new_message" placeholder="Enter a new message">
-            <input type="submit" value="Submit">
+            <input type="text" name="new_message" placeholder="Share your thoughts...">
+            <input type="submit" value="Send Message">
         </form>
     </div>
-</body>
 
+    <footer class="footer">
+        <p>&copy; 2025 Sachin Ayeshmantha. All rights reserved.</p>
+    </footer>
+</body>
 </html>
